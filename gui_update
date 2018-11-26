@@ -1,0 +1,60 @@
+#!/bin/bash
+#GUI based update and upgrade
+
+temp=`mktemp -t temp.XXXXXX`
+temp1=`mktemp -t temp1.XXXXXX`
+temp2=`mktemp -t temp2.XXXXXX`
+
+
+function update() {
+zenity --password | sudo -S apt-get update > $temp
+zenity --text-info --title "Updating .." --filename=$temp --width 750 --height 320 
+}
+
+function upgrade() {
+sudo -S apt-get upgrade -y > $temp
+test=$(cat  $temp | sed '$!d')
+if [ $test  != '0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.' ]
+then
+zenity  --progress
+else
+zenity --text-info --title "Upgrading .." --filename=$temp --width 750 --height 320
+fi 
+}
+
+function autoclean() {
+sudo -S apt-get autoclean -y > $temp
+zenity --text-info --title "Cleaning .." --filename=$temp --width 750 --height 320 
+}
+
+function autoremove() {
+sudo -S autoremove -y > $temp
+zenity --text-info --title "Spoiled packages removing  .." --filename=$temp --width 750 --height 320 
+}
+
+while [ 1 ]
+do
+zenity --list --radiolist --title "Cache Update and Upgrade!" --column  "Select one"  --column  "Item " FALSE  "Update" FALSE "Upgrade" FALSE "Autoclean" FALSE "Autoremove" FALSE "Exit" --width 750 --height 320 > $temp1
+
+if [ $? -eq 1 ]
+then
+break
+fi
+
+selection=`cat $temp1`
+
+case $selection in 
+"Update")
+ update ;;
+"Upgrade")
+ upgrade ;;
+"Autoclean")
+ autoclean ;;
+"Autoremove")
+ autoremove ;;
+"Exit")
+ break ;;
+*)
+ zenity --info "Sorry ,invalid selection"
+esac
+done
