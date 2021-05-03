@@ -1,5 +1,8 @@
-# GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE BASH SHELL SCRIPT
+# GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
 -----------------------------------------------------------------------------------------------------------------------------
+##Dependency :
+-[x] zenity
+-[x] rkhunter
 This Script using zenity gui.If Your's linux system has not zenity package then first you should need to install this by using
 `sudo apt-get install zenity`
 then this script works properly by `./gui_update_1.sh`.
