@@ -12,10 +12,22 @@
 #!/bin/bash
 
 
+function bell_sound(){
+	tput bel
+	if [[ $? -ne 0 ]]
+	then
+		printf "\a"
+	fi
+}
+
+#check internet is connect or not
+
+
 #Checking either zwnity installed or not
 zenity --version
 if [[ $? -ne 0 ]]
 then
+	bell_sound
 	echo -e "Please run \'~$ sudo apt install zenity\'\n before run this script" #zenity installation command
 else
 	pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") #Storing password into pass variable
@@ -44,6 +56,8 @@ else
 	echo "# All Done!"
 
 ) | zenity --title "GUI Update & Upgrade Bash script.." --progress --auto-close --auto-kill --width=320 --height=150 --title="GUI Update & Upgrade"
+	bell_sound
+
 
 fi
 
