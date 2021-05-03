@@ -10,6 +10,8 @@
 
 
 #!/bin/bash
+r="\e[1;31m"   #red color
+u="\e[0m"     #reinstall default color
 
 
 function bell_sound(){
@@ -28,7 +30,16 @@ zenity --version
 if [[ $? -ne 0 ]]
 then
 	bell_sound
-	echo -e "Please run \'~$ sudo apt install zenity\'\n before run this script" #zenity installation command
+	echo -e "$r Please run \'~$ sudo apt install zenity\'\n before run this script $u" #zenity installation command
+	zenity --warning --text="No Zenity packages found" --width=320 --height=150 --timeout=3 --title="GUI Update & Upgrade"
+	zenity --question --text="Do you like to installed it in your machine?" --width=320 --height=150 --timeout=5 --title="GUI Update & Upgrade"
+	if [[ $? -eq 0 ]]
+	then
+		pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") 
+		$pass | sudo apt install zenity -y
+	else
+		exit
+	fi
 else
 	pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") #Storing password into pass variable
 	(
