@@ -1,6 +1,8 @@
 ![bash-shell](https://img.shields.io/badge/bash-shell-red)
 
 # GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
+Version - 2.2.2
+License - GNU GPL V-3.0
 -----------------------------------------------------------------------------------------------------------------------------
 ## 
 Dependency :
