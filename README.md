@@ -1,6 +1,7 @@
 # GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
 -----------------------------------------------------------------------------------------------------------------------------
-##Dependency :
+## 
+Dependency :
 - [ x ] zenity
 - [ x ] rkhunter
 
