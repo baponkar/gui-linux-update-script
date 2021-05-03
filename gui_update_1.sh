@@ -33,14 +33,31 @@ then
 	echo -e "$r Please run \'~$ sudo apt install zenity\'\n before run this script $u" #zenity installation command
 	zenity --warning --text="No Zenity packages found" --width=320 --height=150 --timeout=3 --title="GUI Update & Upgrade"
 	bell_sound
-	zenity --question --text="Do you like to installed it in your machine?" --width=320 --height=150 --timeout=5 --title="GUI Update & Upgrade"
-	if [[ $? -eq 0 ]]
+	zenity --question --text="Do you like to installed it in your machine?" --width=320 --height=150 --timeout=5 \
+	--title="GUI Update & Upgrade"
+	if [[ $? -ne 0 ]]
 	then
-		pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") 
-		$pass | sudo apt install zenity -y
-	else
-		exit
-	fi
+		bell_sound
+		pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade" --auto-kill) 
+		bell_sound
+		$pass | sudo apt install zenity -y > error.txt
+		
+		if [[ $? -eq 0 ]]
+				then
+					bell_sound
+					zenity --info  --text="The zenity package installed successfully.Now run again this script." \
+					--width=320 --height=150 --title="GUI Update & Upgrade" --timeout=3
+				else
+					bell_sound
+					zenity --text-info --filename="error.txt" --text="Error" --width=320 --height=150 -\
+					-title="GUI Update & Upgrade"
+				fi
+			else
+				exit
+		
+		fi
+
+
 else
 	pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") #Storing password into pass variable
 	(
