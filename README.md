@@ -1,4 +1,4 @@
-![bash-shell](https://img.shields.io/badge/bash-shell-red)
+![bash-shell](https://img.shields.io/badge/bash-shell-red) ![version-2.2.2](https://img.shields.io/badge/version-2.2.2-blue)
 
 # GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
 
