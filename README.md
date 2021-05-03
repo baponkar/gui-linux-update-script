@@ -1,4 +1,4 @@
-# GUI LINUX UPDATE , UPGRADE BASH SHELL SCRIPT
+# GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE BASH SHELL SCRIPT
 -----------------------------------------------------------------------------------------------------------------------------
 This Script using zenity gui.If Your's linux system has not zenity package then first you should need to install this by using
 `sudo apt-get install zenity`
