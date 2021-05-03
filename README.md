@@ -2,9 +2,9 @@
 
 # GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
 
-#####Version - 2.2.2
+##### Version - 2.2.2
 
-#####License - GNU GPL V-3.0
+##### License - GNU GPL V-3.0
 -----------------------------------------------------------------------------------------------------------------------------
 ## 
 Dependency :
