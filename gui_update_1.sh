@@ -88,7 +88,7 @@ else
 	echo 100
 	echo "# All Done!"
 
-) | zenity --title "GUI Update & Upgrade Bash script.." --progress --auto-close --auto-kill --width=320 --height=150 --title="GUI Update & Upgrade"
+) | zenity --title "GUI Update & Upgrade Bash script.." --progress --auto-close --auto-kill --width=320 --height=150 --title="GUI Update & Upgrade" --time-remaining
 	bell_sound
 
 
@@ -117,9 +117,9 @@ zenity --question --text="Do you like to security check in your machine?" --widt
 		then
 			
 			echo "$pass" | sudo -S  rkhunter --sk --propupd | zenity --progress --pulsate --text="Security checking..."\
-			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill
+			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill --time-remaining
 			echo "$pass" | sudo -S rkhunter --sk -c | zenity --progress --pulsate --text="Security checking..."\
-			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill
+			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill --time-remaining
 			touch temp
 			echo -e "The rkhunter security risks.\n"  >> temp
 			now=$(date +%d%m%Y%r)
