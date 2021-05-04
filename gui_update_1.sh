@@ -135,7 +135,7 @@ zenity --question --text="Do you like to security check in your machine?" --widt
 			
 			touch temp
 			echo -e "The rkhunter security risks.\n"  >> temp
-			now=$(date +%d%m%Y%r)
+			now=$(date +%d-%m-%Y-%r)
 			echo "System last run : $now" >> temp
 			cat -n /var/log/rkhunter.log | grep -i warning >> temp
 			
