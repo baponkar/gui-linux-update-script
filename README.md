@@ -2,7 +2,7 @@
 
 # GUI PACKAGES LINUX UPDATE , UPGRADE AND SECURITY CHECK FOR YOUR MACHINE IN BASH SHELL SCRIPT
 
-##### Latest Stable Version - 2.2.2
+##### Latest Stable Version - 2.2.4
 
 ##### License - GNU GPL V-3.0
 -----------------------------------------------------------------------------------------------------------------------------
