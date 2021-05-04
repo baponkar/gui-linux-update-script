@@ -101,7 +101,7 @@ then
 else
 	bell_sound
 	zenity --info  --text="The Update and Upgrade of packages runs successfully!\n There is no Error!" --width=320 --height=150 \
-	--timeout=2 --title="GUI Update & Upgrade"
+	--timeout=0.5 --title="GUI Update & Upgrade"
 fi
 
 rm -r error.txt
