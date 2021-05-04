@@ -13,7 +13,9 @@ Dependency :
 
 ###
 This bash shell script is for update,upgrade packages and also check the security warning by RootKit Hunter package. You just need to clone this repository and change working directory into cloned directory and then run script in terminal by 
-  `chmod +x gui_update_1.sh &&./gui_update_1.sh`
+
+ `chmod +x gui_update_1.sh &&./gui_update_1.sh`
+ 
 Now all information and messages are shown in graphical user interface.
 
 Screenshots :
