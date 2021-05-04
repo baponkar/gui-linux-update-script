@@ -15,10 +15,14 @@ u="\e[0m"     #reinstall default color
 
 
 function bell_sound(){
-	tput bel
+	echo -e '\a'
 	if [[ $? -ne 0 ]]
 	then
-		printf "\a"
+		tput bel
+		if [[ $? -ne 0 ]]
+		then
+			printf "\a"
+		fi
 	fi
 }
 
