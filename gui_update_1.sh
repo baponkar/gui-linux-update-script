@@ -42,7 +42,7 @@ then
 	if [[ $? -ne 0 ]]
 	then
 		bell_sound
-		pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade" --auto-kill) 
+		pass=$(zenity --password --width=320 --height=150 --timeout=10 --title="GUI Update & Upgrade") 
 		bell_sound
 		$pass | sudo apt install zenity -y > error.txt
 		
@@ -85,10 +85,12 @@ else
 	echo "# Removing..."
 	echo "$pass" | sudo -S apt-get autoremove -y 1>> success.txt 2>> error.txt
 
-	echo 100
+	echo 99
 	echo "# All Done!"
+	sleep 1
 
-) | zenity --title "GUI Update & Upgrade Bash script.." --progress --auto-close --auto-kill --width=320 --height=150 --title="GUI Update & Upgrade" --time-remaining
+) | zenity --title "GUI Update & Upgrade Bash script.." --progress --auto-close\
+       	--auto-kill --width=320 --height=150 --title="GUI Update & Upgrade" --time-remaining
 	bell_sound
 
 
@@ -101,7 +103,7 @@ then
 else
 	bell_sound
 	zenity --info  --text="The Update and Upgrade of packages runs successfully!\n There is no Error!" --width=320 --height=150 \
-	--timeout=0.5 --title="GUI Update & Upgrade"
+	--timeout=1 --title="GUI Update & Upgrade"
 fi
 
 rm -r error.txt
@@ -115,11 +117,22 @@ zenity --question --text="Do you like to security check in your machine?" --widt
 		rkhunter --version
 		if [[ $? -eq 0 ]]
 		then
+		(	echo 0
+			echo "# Security Check [1] ... "
+			echo "$pass" | sudo -S  rkhunter --sk --propupd 
 			
-			echo "$pass" | sudo -S  rkhunter --sk --propupd | zenity --progress --pulsate --text="Security checking..."\
-			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill --time-remaining
-			echo "$pass" | sudo -S rkhunter --sk -c | zenity --progress --pulsate --text="Security checking..."\
-			--width=320 --height=150 --title="GUI UPDATE & Upgrade" --auto-close --auto-kill --time-remaining
+			
+			echo 10
+			echo "# Security Check [2] ... "
+			echo "$pass" | sudo -S rkhunter --sk -c 
+			
+			echo 99
+			echo "# Security check successfully done!"
+			sleep 1
+			
+		) | zenity --title "GUI Update & Upgrade Bash script.." --progress --pulsate --auto-close --auto-kill \
+		--width=320 --height=150 --title="GUI Update & Upgrade" --time-remaining
+			
 			touch temp
 			echo -e "The rkhunter security risks.\n"  >> temp
 			now=$(date +%d%m%Y%r)
